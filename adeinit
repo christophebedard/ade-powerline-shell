@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Copy default powerline-shell config if it doesn't exist
+if [[ -e "$HOME/.powerline-shell.json" ]]; then
+    echo "powerline-shell config already exists"
+else
+    echo "powerline-shell config does not exist; copying default config to $HOME"
+    cp /opt/powerline-shell/.powerline-shell.json $HOME
+fi
+
+# Add prompt setup to .bashrc
+echo "adding prompt setup to .bashrc"
+cat /opt/powerline-shell/.bashrc >> $HOME/.bashrc
