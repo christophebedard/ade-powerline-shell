@@ -8,6 +8,11 @@ else
     cp /opt/powerline-shell/.powerline-shell.json $HOME
 fi
 
-# Add prompt setup to .bashrc
-echo "adding prompt setup to .bashrc"
-cat /opt/powerline-shell/.bashrc >> $HOME/.bashrc
+# Add prompt setup to .bashrc if needed
+if grep -Fq "PS1=\$(powerline-shell \$?)" $HOME/.bashrc
+then
+    echo "prompt setup is already in .bashrc"
+else
+    echo "adding prompt setup to .bashrc"
+    cat /opt/powerline-shell/.bashrc >> $HOME/.bashrc
+fi
