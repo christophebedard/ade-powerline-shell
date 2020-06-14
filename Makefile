@@ -1,3 +1,5 @@
+GITHUB_SHA ?= $(shell git log -1 --pretty=format:"%H")
+
 all: help
 
 help:
@@ -14,7 +16,7 @@ prep:
 	@./build-opt.sh
 
 build: prep
-	@docker build --tag=christophebedard/ade-powerline-shell .
+	@docker build --label ade_image_commit_sha=${GITHUB_SHA} --tag=christophebedard/ade-powerline-shell .
 
 pull:
 	@docker pull christophebedard/ade-powerline-shell
