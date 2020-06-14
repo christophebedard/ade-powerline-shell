@@ -18,3 +18,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: christophebedard/ade-powerline-shell
           tags: latest
+          labels: ade_image_commit_sha=${{ github.sha }}
+          add_git_labels: true
